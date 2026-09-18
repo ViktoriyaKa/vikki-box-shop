@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #fbf2eb;
+  --cream-deep: #f3e4d8;
+  --ink: #4e3428;
+  --ink-soft: #7a5b4a;
+  --blush: #cba190;
+  --card: #fffaf6;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-blush: var(--blush);
+  --color-card: var(--card);
+  --font-sans: var(--font-comfortaa);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-comfortaa), "Segoe UI", sans-serif;
+}
+
+::selection {
+  background: #ead3c6;
+  color: var(--ink);
+}
