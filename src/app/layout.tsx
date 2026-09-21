@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Comfortaa } from "next/font/google";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import "./globals.css";
 
 const comfortaa = Comfortaa({
@@ -9,9 +11,12 @@ const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  title: "Vikki Box Shop — маленькие радости для твоего дня",
+  title: {
+    default: "Vikki Box Shop — маленькие радости для твоего дня",
+    template: "%s · Vikki Box Shop",
+  },
   description:
-    "Боксы, которые дарят тепло. Логотип и витрина бренда Vikki Box Shop.",
+    "Подарочные боксы ручной сборки: канцелярия, котики, сюрпризы и тёплые наборы без повода.",
   icons: {
     icon: "/brand/favicon-256.png",
   },
@@ -20,8 +25,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ru" className={`${comfortaa.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-cream text-ink">
-        {children}
+      <body className="flex min-h-full flex-col bg-cream text-ink">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
