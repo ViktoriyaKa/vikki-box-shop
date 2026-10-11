@@ -10,7 +10,7 @@ export function OrderForm() {
   const searchParams = useSearchParams();
   const preset = searchParams.get("box") ?? "";
   const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
   const [pvz, setPvz] = useState("");
   const [mood, setMood] = useState(preset);
@@ -35,7 +35,7 @@ export function OrderForm() {
 
     const order = {
       name: name.trim(),
-      age: age.trim(),
+      city: city.trim(),
       phone: phone.trim(),
       pvz: pvz.trim(),
       mood: mood || "any",
@@ -126,12 +126,12 @@ export function OrderForm() {
           />
         </label>
         <label className="block text-sm">
-          <span className="text-ink-soft">Возраст</span>
+          <span className="text-ink-soft">Город</span>
           <input
-            value={age}
-            onChange={(event) => setAge(event.target.value)}
+            value={city}
+            onChange={(event) => setCity(event.target.value)}
             className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
-            placeholder="например, 19"
+            placeholder="Санкт-Петербург"
           />
         </label>
       </div>

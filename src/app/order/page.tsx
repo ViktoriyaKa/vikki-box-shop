@@ -14,13 +14,13 @@ export default function OrderPage() {
         <p className="text-[11px] tracking-[0.28em] uppercase text-blush">
           форма
         </p>
-        <h1 className="mt-3 text-4xl font-semibold">Для быстрого заказа</h1>
+        <h1 className="mt-3 text-4xl font-semibold">Оформление заказа</h1>
         <ul className="mt-5 space-y-3 text-sm leading-6 text-ink-soft">
           <li>мини — 1 500 ₽, стандарт — 2 000 ₽</li>
-          <li>нужны адрес ПВЗ Ozon и телефон из приложения</li>
+          <li>адрес ПВЗ Ozon и номер телефона, привязанный к приложению</li>
+          <li>имя, город, пожелания по цветам</li>
           <li>заказ принят после оплаты бокса и доставки</li>
-          <li>доставка только по России, оплачивается отдельно</li>
-          <li>сборка и отправка — до 5 дней, кроме субботы и воскресенья</li>
+          <li>сборка и отправка — до 5 дней</li>
           <li>смотрите актуальный состав, а не старые видео в профиле</li>
         </ul>
       </Reveal>
