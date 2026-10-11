@@ -10,31 +10,37 @@ export function OrderForm() {
   const searchParams = useSearchParams();
   const preset = searchParams.get("box") ?? "";
   const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
-  const [box, setBox] = useState(preset);
-  const [note, setNote] = useState("");
+  const [age, setAge] = useState("");
+  const [phone, setPhone] = useState("");
+  const [pvz, setPvz] = useState("");
+  const [mood, setMood] = useState(preset);
+  const [size, setSize] = useState("");
+  const [colors, setColors] = useState("");
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
 
   const selectedTitle = useMemo(
-    () => products.find((item) => item.slug === box)?.title ?? "на ваше усмотрение",
-    [box],
+    () => products.find((item) => item.slug === mood)?.title ?? "на ваше усмотрение",
+    [mood],
   );
 
   function onSubmit(event: FormEvent) {
     event.preventDefault();
     setError("");
 
-    if (!name.trim() || !contact.trim()) {
-      setError("Напишите, как к вам обращаться и куда ответить.");
+    if (!name.trim() || !phone.trim() || !pvz.trim() || !size) {
+      setError("Нужны имя, телефон для Ozon, адрес ПВЗ и размер бокса.");
       return;
     }
 
     const order = {
       name: name.trim(),
-      contact: contact.trim(),
-      box: box || "any",
-      note: note.trim(),
+      age: age.trim(),
+      phone: phone.trim(),
+      pvz: pvz.trim(),
+      mood: mood || "any",
+      size,
+      colors: colors.trim(),
       createdAt: new Date().toISOString(),
     };
 
@@ -53,10 +59,10 @@ export function OrderForm() {
     return (
       <div className="rounded-[1.8rem] bg-card px-6 py-10 text-center">
         <p className="text-blush">♡</p>
-        <h2 className="mt-3 text-2xl font-semibold">Заявка рядом, на этом компьютере</h2>
+        <h2 className="mt-3 text-2xl font-semibold">Заявка принята после оплаты</h2>
         <p className="mt-3 text-sm leading-6 text-ink-soft">
-          «{selectedTitle}» для {name}. Ответ придёт туда, куда вы оставили контакт.
-          Облако не используем — заявка сохранилась локально в браузере.
+          {size === "mini" ? "Мини" : "Стандарт"} «{selectedTitle}» для {name}.
+          Сборка до 5 дней, доставка по России — отдельно.
         </p>
       </div>
     );
@@ -65,31 +71,25 @@ export function OrderForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-4 rounded-[1.8rem] bg-card px-5 py-7 sm:px-7">
       <label className="block text-sm">
-        <span className="text-ink-soft">Как к вам обращаться</span>
-        <input
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
-          placeholder="Вика"
-        />
-      </label>
-      <label className="block text-sm">
-        <span className="text-ink-soft">Телеграм, телефон или почта</span>
-        <input
-          value={contact}
-          onChange={(event) => setContact(event.target.value)}
-          className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
-          placeholder="@username"
-        />
-      </label>
-      <label className="block text-sm">
-        <span className="text-ink-soft">Какой бокс</span>
+        <span className="text-ink-soft">Размер бокса</span>
         <select
-          value={box}
-          onChange={(event) => setBox(event.target.value)}
+          value={size}
+          onChange={(event) => setSize(event.target.value)}
           className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
         >
-          <option value="">Помогите выбрать</option>
+          <option value="">выберите</option>
+          <option value="mini">мини — 1 500 ₽</option>
+          <option value="standard">стандарт — 2 000 ₽</option>
+        </select>
+      </label>
+      <label className="block text-sm">
+        <span className="text-ink-soft">Настроение</span>
+        <select
+          value={mood}
+          onChange={(event) => setMood(event.target.value)}
+          className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
+        >
+          <option value="">помогите выбрать</option>
           {products.map((product) => (
             <option key={product.slug} value={product.slug}>
               {product.title}
@@ -98,13 +98,51 @@ export function OrderForm() {
         </select>
       </label>
       <label className="block text-sm">
-        <span className="text-ink-soft">Для кого и какое настроение</span>
+        <span className="text-ink-soft">Адрес ПВЗ Ozon</span>
+        <input
+          value={pvz}
+          onChange={(event) => setPvz(event.target.value)}
+          className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
+          placeholder="город, пункт выдачи"
+        />
+      </label>
+      <label className="block text-sm">
+        <span className="text-ink-soft">Телефон, привязанный к Ozon</span>
+        <input
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+          className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
+          placeholder="+7"
+        />
+      </label>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="block text-sm">
+          <span className="text-ink-soft">Имя</span>
+          <input
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
+            placeholder="Вика"
+          />
+        </label>
+        <label className="block text-sm">
+          <span className="text-ink-soft">Возраст</span>
+          <input
+            value={age}
+            onChange={(event) => setAge(event.target.value)}
+            className="mt-1 w-full rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
+            placeholder="например, 19"
+          />
+        </label>
+      </div>
+      <label className="block text-sm">
+        <span className="text-ink-soft">Пожелания по цветам, если есть</span>
         <textarea
-          value={note}
-          onChange={(event) => setNote(event.target.value)}
-          rows={4}
+          value={colors}
+          onChange={(event) => setColors(event.target.value)}
+          rows={3}
           className="mt-1 w-full resize-none rounded-2xl border border-blush/30 bg-cream px-4 py-3 outline-none transition focus:border-blush"
-          placeholder="Подруге, любит котиков и спокойные цвета"
+          placeholder="нюд, пыльная роза, без яркого"
         />
       </label>
 

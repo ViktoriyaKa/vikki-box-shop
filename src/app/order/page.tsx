@@ -12,18 +12,17 @@ export default function OrderPage() {
     <div className="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_1fr] lg:py-16">
       <Reveal>
         <p className="text-[11px] tracking-[0.28em] uppercase text-blush">
-          заказ
+          форма
         </p>
-        <h1 className="mt-3 text-4xl font-semibold">Соберём бокс под человека</h1>
-        <p className="mt-4 text-base leading-7 text-ink-soft">
-          Напишите, кому дарите и какое настроение нужно. Заявка остаётся здесь,
-          на компьютере — без облачных таблиц. Я увижу её, когда открою сайт на
-          этой же машине, или вы продублируете сообщение в мессенджер.
-        </p>
-        <p className="mt-4 text-sm leading-6 text-ink-soft">
-          Обычно внутри: тишью, открытка и 4–6 маленьких вещей с полки.
-          Сроки сборки — несколько дней.
-        </p>
+        <h1 className="mt-3 text-4xl font-semibold">Для быстрого заказа</h1>
+        <ul className="mt-5 space-y-3 text-sm leading-6 text-ink-soft">
+          <li>мини — 1 500 ₽, стандарт — 2 000 ₽</li>
+          <li>нужны адрес ПВЗ Ozon и телефон из приложения</li>
+          <li>заказ принят после оплаты бокса и доставки</li>
+          <li>доставка только по России, оплачивается отдельно</li>
+          <li>сборка и отправка — до 5 дней, кроме субботы и воскресенья</li>
+          <li>смотрите актуальный состав, а не старые видео в профиле</li>
+        </ul>
       </Reveal>
       <Reveal delay={0.08}>
         <Suspense
