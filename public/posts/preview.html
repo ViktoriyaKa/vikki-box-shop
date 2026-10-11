@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Посты 1×1 — Vikki Box Shop</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f7eee6;
+      color: #3d2a22;
+      font-family: Georgia, serif;
+      padding: 32px 20px 48px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 400;
+      margin: 0 0 28px;
+    }
+    .grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    figure { margin: 0; }
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(78, 52, 40, 0.08);
+    }
+    figcaption {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #7a5b4a;
+    }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Квадратные посты 1×1</h1>
+  <div class="grid">
+    <figure>
+      <img src="forma.png" alt="Оформление заказа" />
+      <figcaption>forma.png — оформление заказа</figcaption>
+    </figure>
+    <figure>
+      <img src="prajs.png" alt="Прайс-лист" />
+      <figcaption>prajs.png — прайс-лист</figcaption>
+    </figure>
+  </div>
+</body>
+</html>

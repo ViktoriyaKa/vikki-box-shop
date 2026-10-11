@@ -25,7 +25,8 @@ npm run dev
 | `public/brand/` | Логотип |
 | `public/hero/` | Шапка и обложка |
 | `public/products/` | Фото боксов |
-| `public/stories/` | Сторис: форма заказа и прайс |
+| `public/stories/` | Сторис 9:16: форма заказа и прайс |
+| `public/posts/` | Посты 1×1: форма и прайс |
 | `src/data/products.ts` | Названия, цены, состав |
 | браузер, localStorage | Заявки с страницы «Заказать» |
 
